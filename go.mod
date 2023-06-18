@@ -11,6 +11,7 @@ require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
 	github.com/go-redis/redis/v7 v7.4.1
+	github.com/golang-jwt/jwt/v5 v5.0.0
 	github.com/googollee/go-socket.io v1.6.2
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.4.0
@@ -19,6 +20,7 @@ require (
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.7.2
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
+	go.mongodb.org/mongo-driver v1.11.7
 	go.opencensus.io v0.20.1
 	golang.org/x/oauth2 v0.0.0-20220808172628-8227340efae7
 	gorm.io/driver/mysql v1.3.6
@@ -43,7 +45,6 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.9.10 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
-	github.com/golang-jwt/jwt/v5 v5.0.0 // indirect
 	github.com/golang-sql/civil v0.0.0-20190719163853-cb61b32ac6fe // indirect
 	github.com/golang-sql/sqlexp v0.0.0-20170517235910-f1bb20e5a188 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -85,7 +86,6 @@ require (
 	github.com/xdg-go/scram v1.1.1 // indirect
 	github.com/xdg-go/stringprep v1.0.3 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d // indirect
-	go.mongodb.org/mongo-driver v1.11.7 // indirect
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa // indirect
 	golang.org/x/net v0.0.0-20220812174116-3211cb980234 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
