@@ -22,6 +22,7 @@ var (
 	ErrS3ApiSecretKeyMissing = sdkcm.CustomError("ErrS3ApiSecretKeyMissing", "AWS S3 API secret key is missing")
 	ErrS3RegionMissing       = sdkcm.CustomError("ErrS3RegionMissing", "AWS S3 region is missing")
 	ErrS3BucketMissing       = sdkcm.CustomError("ErrS3ApiKeyMissing", "AWS S3 bucket is missing")
+	ErrS3DomainMissing       = sdkcm.CustomError("ErrS3DomainMissing", "AWS S3 Domain is missing")
 )
 
 type s3 struct {
@@ -40,6 +41,7 @@ type s3Config struct {
 	s3ApiSecret string
 	s3Region    string
 	s3Bucket    string
+	s3Domain    string
 }
 
 func New(prefix ...string) *s3 {
@@ -68,6 +70,7 @@ func (s *s3) InitFlags() {
 	flag.StringVar(&s.cfg.s3ApiSecret, fmt.Sprintf("%s-%s", s.GetPrefix(), "api-secret"), "", "S3 API secret key")
 	flag.StringVar(&s.cfg.s3Region, fmt.Sprintf("%s-%s", s.GetPrefix(), "region"), "", "S3 region")
 	flag.StringVar(&s.cfg.s3Bucket, fmt.Sprintf("%s-%s", s.GetPrefix(), "bucket"), "", "S3 bucket")
+	flag.StringVar(&s.cfg.s3Domain, fmt.Sprintf("%s-%s", s.GetPrefix(), "domain"), "", "S3 Domain")
 }
 
 func (s *s3) Configure() error {
@@ -121,6 +124,9 @@ func (cfg *s3Config) check() error {
 	}
 	if len(cfg.s3Region) < 1 {
 		return ErrS3RegionMissing
+	}
+	if len(cfg.s3Domain) < 1 {
+		return ErrS3DomainMissing
 	}
 	return nil
 }
