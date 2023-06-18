@@ -1,8 +1,8 @@
 package main
 
 import (
-	goservice "github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/plugin/storage/sdkes"
+	goservice "github.com/leductoan3082004/go-sdk"
+	"github.com/leductoan3082004/go-sdk/plugin/storage/sdkes"
 	"github.com/sirupsen/logrus"
 )
 

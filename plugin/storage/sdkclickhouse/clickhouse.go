@@ -8,9 +8,9 @@ package sdkclickhouse
 
 import (
 	"flag"
-	"github.com/200Lab-Education/go-sdk/logger"
 	_ "github.com/ClickHouse/clickhouse-go"
 	"github.com/jmoiron/sqlx"
+	"github.com/leductoan3082004/go-sdk/logger"
 	"sync"
 	"time"
 )

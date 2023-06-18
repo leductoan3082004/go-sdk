@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	goservice "github.com/200Lab-Education/go-sdk"
-	pb "github.com/200Lab-Education/go-sdk/plugin/pubsub"
-	"github.com/200Lab-Education/go-sdk/plugin/pubsub/natspb"
+	goservice "github.com/leductoan3082004/go-sdk"
+	pb "github.com/leductoan3082004/go-sdk/plugin/pubsub"
+	"github.com/leductoan3082004/go-sdk/plugin/pubsub/natspb"
 	"log"
 )
 

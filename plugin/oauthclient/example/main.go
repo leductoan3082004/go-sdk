@@ -7,9 +7,8 @@
 package main
 
 import (
-	"github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/plugin/oauthclient"
 	"github.com/gin-gonic/gin"
+	"github.com/leductoan3082004/go-sdk/plugin/oauthclient"
 	"golang.org/x/oauth2/clientcredentials"
 	"net/http"
 )

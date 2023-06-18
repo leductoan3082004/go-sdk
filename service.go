@@ -5,9 +5,9 @@ package goservice
 import (
 	"flag"
 	"fmt"
-	"github.com/200Lab-Education/go-sdk/httpserver"
-	"github.com/200Lab-Education/go-sdk/logger"
 	"github.com/joho/godotenv"
+	"github.com/leductoan3082004/go-sdk/httpserver"
+	"github.com/leductoan3082004/go-sdk/logger"
 	"log"
 	"os"
 	"os/signal"

@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	goservice "github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/plugin/aws"
+	goservice "github.com/leductoan3082004/go-sdk"
+	"github.com/leductoan3082004/go-sdk/plugin/aws"
 	"log"
 )
 

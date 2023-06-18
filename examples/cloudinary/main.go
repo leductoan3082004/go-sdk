@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	goservice "github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/plugin/cloudinary"
-	"github.com/200Lab-Education/go-sdk/sdkcm"
+	goservice "github.com/leductoan3082004/go-sdk"
+	"github.com/leductoan3082004/go-sdk/plugin/cloudinary"
+	"github.com/leductoan3082004/go-sdk/sdkcm"
 	"log"
 )
 

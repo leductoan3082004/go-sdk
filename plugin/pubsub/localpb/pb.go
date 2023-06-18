@@ -4,8 +4,8 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/200Lab-Education/go-sdk/logger"
-	pb "github.com/200Lab-Education/go-sdk/plugin/pubsub"
+	"github.com/leductoan3082004/go-sdk/logger"
+	pb "github.com/leductoan3082004/go-sdk/plugin/pubsub"
 	"sync"
 )
 

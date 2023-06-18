@@ -3,11 +3,11 @@ package sckio
 import (
 	"flag"
 	"fmt"
-	goservice "github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/logger"
-	"github.com/200Lab-Education/go-sdk/sdkcm"
 	"github.com/gin-gonic/gin"
 	socketio "github.com/googollee/go-socket.io"
+	goservice "github.com/leductoan3082004/go-sdk"
+	"github.com/leductoan3082004/go-sdk/logger"
+	"github.com/leductoan3082004/go-sdk/sdkcm"
 	"log"
 	"net/http"
 )

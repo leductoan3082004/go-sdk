@@ -1,9 +1,9 @@
 package main
 
 import (
-	goservice "github.com/200Lab-Education/go-sdk"
-	"github.com/200Lab-Education/go-sdk/sdkcm"
 	"github.com/gin-gonic/gin"
+	goservice "github.com/leductoan3082004/go-sdk"
+	"github.com/leductoan3082004/go-sdk/sdkcm"
 	"log"
 	"net/http"
 )

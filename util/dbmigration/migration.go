@@ -8,7 +8,7 @@ package dbmigration
 
 import (
 	"fmt"
-	"github.com/200Lab-Education/go-sdk/logger"
+	"github.com/leductoan3082004/go-sdk/logger"
 	"gorm.io/gorm"
 	"io/ioutil"
 	"log"

@@ -9,7 +9,7 @@ package jaeger
 import (
 	"flag"
 	"fmt"
-	"github.com/200Lab-Education/go-sdk/logger"
+	"github.com/leductoan3082004/go-sdk/logger"
 	jg "go.opencensus.io/exporter/jaeger"
 	"go.opencensus.io/plugin/ocgrpc"
 	"go.opencensus.io/stats/view"
