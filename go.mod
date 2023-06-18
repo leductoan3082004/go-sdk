@@ -1,4 +1,4 @@
-module github.com/200Lab-Education/go-sdk
+module github.com/leductoan3082004/go-sdk
 
 go 1.18
 
