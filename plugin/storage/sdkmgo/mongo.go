@@ -7,13 +7,15 @@
 package sdkmgo
 
 import (
+	"context"
 	"flag"
 	"github.com/200Lab-Education/go-sdk/logger"
+	"github.com/globalsign/mgo"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"math"
 	"sync"
 	"time"
-
-	"github.com/globalsign/mgo"
 )
 
 var (
@@ -32,7 +34,7 @@ type MongoDBOpt struct {
 type mongoDB struct {
 	name      string
 	logger    logger.Logger
-	session   *mgo.Session
+	session   *mongo.Client
 	isRunning bool
 	once      *sync.Once
 	*MongoDBOpt
@@ -94,13 +96,6 @@ func (mgDB *mongoDB) Configure() error {
 }
 
 func (mgDB *mongoDB) Cleanup() {
-	if mgDB.isDisabled() {
-		return
-	}
-
-	if mgDB.session != nil {
-		mgDB.session.Close()
-	}
 }
 
 func (mgDB *mongoDB) Run() error {
@@ -109,7 +104,7 @@ func (mgDB *mongoDB) Run() error {
 
 func (mgDB *mongoDB) Stop() <-chan bool {
 	if mgDB.session != nil {
-		mgDB.session.Close()
+		_ = mgDB.session.Disconnect(context.Background())
 	}
 	mgDB.isRunning = false
 
@@ -133,17 +128,16 @@ func (mgDB *mongoDB) Get() interface{} {
 	if mgDB.session == nil {
 		return nil
 	}
-	return mgDB.session.New()
+	return mgDB.session
 }
 
-func (mgDB *mongoDB) getConnWithRetry(retryCount int) (*mgo.Session, error) {
-	db, err := mgo.Dial(mgDB.MgoUri)
-
+func (mgDB *mongoDB) getConnWithRetry(retryCount int) (*mongo.Client, error) {
+	db, err := mongo.Connect(context.Background(), options.Client().ApplyURI(mgDB.MgoUri))
 	if err != nil {
 		for {
 			time.Sleep(time.Second * 1)
 			mgDB.logger.Errorf("Retry to connect %s.\n", mgDB.name)
-			db, err = mgo.Dial(mgDB.MgoUri)
+			db, err = mongo.Connect(context.Background(), options.Client().ApplyURI(mgDB.MgoUri))
 
 			if err == nil {
 				go mgDB.reconnectIfNeeded()
@@ -160,8 +154,8 @@ func (mgDB *mongoDB) getConnWithRetry(retryCount int) (*mgo.Session, error) {
 func (mgDB *mongoDB) reconnectIfNeeded() {
 	conn := mgDB.session
 	for {
-		if err := conn.Ping(); err != nil {
-			conn.Close()
+		if err := conn.Ping(context.Background(), nil); err != nil {
+			_ = conn.Disconnect(context.Background())
 			mgDB.logger.Errorf("%s connection is gone, try to reconnect\n", mgDB.name)
 			mgDB.isRunning = false
 			mgDB.once = new(sync.Once)
