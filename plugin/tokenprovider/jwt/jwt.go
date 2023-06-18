@@ -15,6 +15,12 @@ type jwtProvider struct {
 	logger    logger.Logger
 }
 
+func NewJwtProvider(name, prefix string) *jwtProvider {
+	return &jwtProvider{
+		prefix: prefix,
+		name:   name,
+	}
+}
 func (s *jwtProvider) GetPrefix() string {
 	return s.prefix
 }
