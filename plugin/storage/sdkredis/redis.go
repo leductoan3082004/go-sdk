@@ -27,9 +27,10 @@ package sdkredis
 // 		Distributed Locks.
 
 import (
+	"context"
 	"flag"
-	"github.com/go-redis/redis/v7"
 	"github.com/leductoan3082004/go-sdk/logger"
+	"github.com/redis/go-redis/v9"
 )
 
 var (
@@ -108,7 +109,7 @@ func (r *redisDB) Configure() error {
 	client := redis.NewClient(opt)
 
 	// Ping to test Redis connection
-	if err := client.Ping().Err(); err != nil {
+	if err := client.Ping(context.Background()).Err(); err != nil {
 		r.logger.Error("Cannot connect Redis. ", err.Error())
 		return err
 	}
