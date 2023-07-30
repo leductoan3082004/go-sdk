@@ -205,6 +205,28 @@ func (s *service) parseFlags() {
 
 	s.cmdLine.Parse([]string{})
 }
+func mergeServiceOpts(x []Option, y []Option) []Option {
+	z := make([]Option, len(x)+len(y))
+	copy(z, x)
+	copy(z[len(x):], y)
+	return z
+}
+func (sv *service) InitPrefix(prefix ...string) error {
+	for _, pre := range prefix {
+		sv.initServices[pre].InitFlags()
+		if err := sv.initServices[pre].Run(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+func (sv *service) Add(opts ...Option) Service {
+	for _, opt := range opts {
+		opt(sv)
+	}
+	sv.opts = mergeServiceOpts(sv.opts, opts)
+	return sv
+}
 
 // Service must have a name for service discovery and logging/monitoring
 func WithName(name string) Option {

@@ -56,6 +56,8 @@ type Service interface {
 	// Method export all flags to std/terminal
 	// We might use: "> .env" to move its content .env file
 	OutEnv()
+	InitPrefix(prefix ...string) error
+	Add(opts ...Option) Service
 }
 
 // Service Context: A wrapper for all things needed for developing a service
