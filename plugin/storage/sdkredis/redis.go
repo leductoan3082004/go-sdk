@@ -29,8 +29,8 @@ package sdkredis
 import (
 	"context"
 	"flag"
+	"github.com/go-redis/redis/v8"
 	"github.com/leductoan3082004/go-sdk/logger"
-	"github.com/redis/go-redis/v9"
 )
 
 var (
